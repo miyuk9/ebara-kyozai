@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>もっと使えるLINE講座（スライド）｜荏原スマホパソコン教室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FDFCF8; --white:#FFFFFF;
+    --green:#1E4D3B; --green-dark:#143528;
+    --orange:#E8762C;
+    --ink:#26251F; --sub:#6E6A5E; --line:#E8E4D8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
+    color:var(--ink); background:var(--green-dark);
+    overflow:hidden;
+  }
+  .deck{position:fixed; inset:0 0 76px 0}
+  .slide{
+    position:absolute; inset:0; display:none; overflow-y:auto;
+    background:var(--bg); padding:clamp(20px,5vh,56px) clamp(18px,6vw,90px);
+  }
+  .slide.active{display:flex; flex-direction:column; justify-content:center}
+  .slide-inner{max-width:880px; margin:0 auto; width:100%}
+  .slide--dark{background:var(--green-dark); color:#fff}
+  .slide--section{background:var(--green); color:#fff}
+  .kicker{color:var(--orange); font-weight:700; letter-spacing:.14em; font-size:clamp(13px,1.8vw,17px); margin-bottom:10px}
+  h1{font-weight:900; font-size:clamp(30px,6vw,58px); line-height:1.3; font-feature-settings:"palt"}
+  .slide--dark h1,.slide--section h1{color:#fff}
+  .lead{font-size:clamp(16px,2.4vw,21px); line-height:1.9; margin-top:18px}
+  .slide--dark .lead{color:#EDE9DC}
+  h2{
+    font-weight:900; font-size:clamp(24px,3.6vw,38px); color:var(--green-dark);
+    font-feature-settings:"palt"; margin-bottom:clamp(14px,3vh,28px); line-height:1.35;
+    border-bottom:4px solid var(--green); padding-bottom:10px;
+  }
+  h2 .h2-kicker{display:block; font-size:clamp(12px,1.6vw,15px); color:var(--orange); letter-spacing:.14em; font-weight:700; margin-bottom:6px}
+  .steps{list-style:none; counter-reset:step}
+  .steps li{
+    background:var(--white); border:1px solid var(--line); border-radius:14px;
+    padding:clamp(10px,1.8vh,16px) 18px clamp(10px,1.8vh,16px) 58px; margin-bottom:12px;
+    position:relative; font-size:clamp(16px,2.4vw,22px); line-height:1.7;
+  }
+  .steps li::before{
+    content:counter(step); counter-increment:step;
+    position:absolute; left:18px; top:50%; transform:translateY(-50%);
+    color:var(--orange); font-weight:900; font-size:clamp(20px,3vw,28px);
+  }
+  .words{width:100%; border-collapse:collapse; background:var(--white); table-layout:fixed}
+  .words th,.words td{border:1px solid var(--line); padding:clamp(9px,1.6vh,14px) clamp(8px,1.6vw,16px); text-align:left; font-size:clamp(14px,2.2vw,20px); line-height:1.6; word-break:break-word; overflow-wrap:break-word}
+  .words th{background:var(--green); color:#fff; font-weight:700; width:31%}
+  .memo{
+    background:#F4F1E7; border-left:6px solid var(--orange);
+    border-radius:0 14px 14px 0; padding:clamp(10px,1.8vh,16px) 20px; margin-top:18px;
+    font-size:clamp(15px,2.2vw,19px); line-height:1.8;
+  }
+  .memo b{color:var(--green-dark)}
+  .aikotoba{
+    background:var(--green-dark); color:#fff; border-radius:18px;
+    padding:clamp(16px,3vh,28px) 24px; text-align:center;
+    font-size:clamp(24px,4.5vw,44px); font-weight:900; letter-spacing:.06em; line-height:1.5;
+  }
+  .aikotoba span{color:var(--orange)}
+  .check-list{list-style:none}
+  .check-list li{
+    font-size:clamp(17px,2.6vw,24px); line-height:1.7; margin-bottom:16px;
+    padding-left:44px; position:relative;
+  }
+  .check-list li::before{
+    content:""; position:absolute; left:4px; top:.28em;
+    width:24px; height:24px; border:3px solid var(--green); border-radius:7px; background:#fff;
+  }
+  .plain{font-size:clamp(17px,2.6vw,23px); line-height:2}
+  .nav{
+    position:fixed; left:0; right:0; bottom:0; height:76px;
+    background:var(--green-dark); display:flex; align-items:center;
+    justify-content:space-between; padding:0 clamp(12px,3vw,32px); gap:12px;
+  }
+  .nav button{
+    font-family:inherit; font-size:clamp(16px,2.2vw,19px); font-weight:700;
+    border:none; border-radius:999px; padding:12px clamp(20px,4vw,34px);
+    cursor:pointer; background:var(--orange); color:#fff;
+  }
+  .nav button.prev{background:rgba(255,255,255,.16); color:#fff}
+  .nav button:disabled{opacity:.35; cursor:default}
+  .counter{color:#CFE0D5; font-size:clamp(14px,2vw,17px); font-weight:700; letter-spacing:.06em}
+  .home-link{color:#CFE0D5; font-size:clamp(12px,1.8vw,15px); text-decoration:none; white-space:nowrap}
+  .home-link:hover{color:#fff}
+  .btn-row{margin-top:26px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center}
+  .btn{
+    display:inline-block; text-decoration:none; font-weight:700;
+    font-size:clamp(15px,2.2vw,19px); border-radius:999px; padding:13px 30px;
+  }
+  .btn--orange{background:var(--orange); color:#fff}
+  .btn--ghost{border:2px solid rgba(255,255,255,.5); color:#fff}
+</style>
+</head>
+<body>
+<div class="deck">
+<section class="slide slide--dark"><div class="slide-inner"><div style="text-align:center"><p class="kicker">単発ワークショップ</p><h1>もっと使える<br>LINE講座</h1><p class="lead">グループトーク・アルバム・ビデオ通話。<br>「送れる」から「使いこなす」へ。</p></div></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">準備運動</span>トークの復習</h2><ol class="steps"><li>相手の名前をタップして「トーク」を開く</li><li>文字を打って紙飛行機マークで送信。スタンプも1つ送る</li><li>写真マークから写真を1枚送る</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">グループトーク</span>参加する・作る</h2><ol class="steps"><li>招待の通知が来たら「参加」をタップするだけ</li><li>自分で作るときは「トーク」→ 吹き出しマーク →「グループ」</li><li>入れたい人を選んで、グループ名をつけて「作成」</li></ol><p class="memo"><b>返事は全員に見えます。</b>個別に話したいときは、その人とのトークに戻りましょう。</p></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">アルバム</span>写真をまとめて共有</h2><ol class="steps"><li>トーク画面の右上「≡」→「アルバム」をタップ</li><li>「＋」で新しいアルバムを作り、写真を選んで追加</li><li>旅行や集まりの写真は、トークに流すよりアルバムが見やすい</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">ビデオ通話</span>自分からかける</h2><ol class="steps"><li>相手とのトークを開いて、右上の電話マークをタップ</li><li>「ビデオ通話」を選ぶ。相手が出たら顔を見て話せます</li><li>マイクマークで消音、カメラマークで映像の切り替え</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">あんしん</span>通知の整理と迷惑対策</h2><table class="words"><tr><th>通知が多すぎる</th><td>にぎやかなグループは「通知オフ」にできる（メッセージは消えません）</td></tr><tr><th>知らない人から</th><td>返事をしない。「ブロック」すれば以後届きません</td></tr><tr><th>投資・儲け話</th><td>LINEで誘われる投資話は詐欺を疑う。返事しない</td></tr></table><p class="memo"><b>通知オフとブロックは「失礼」ではありません。</b>自分のペースで使うための正式な機能です。</p></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">まとめ</span>「できた！」チェック</h2><ul class="check-list"><li>グループトークで発言できた</li><li>アルバムを見られた・作れた</li><li>ビデオ通話を自分からかけられた</li><li>通知オフ・ブロックの場所が分かった</li></ul></div></section>
+<section class="slide slide--dark"><div class="slide-inner"><div style="text-align:center">
+<p class="kicker">EBARA SMARTPHONE &amp; PC SCHOOL</p>
+<h1 style="font-size:clamp(26px,4.5vw,44px)">続きは、教室で一緒に。</h1>
+<p class="lead">荏原スマホパソコン教室（エックスモバイル武蔵小山店内）<br>
+少人数でゆっくり。分からないことは、その場で質問できます。<br>講座・相談は完全予約制です。</p>
+<div class="btn-row"><a class="btn btn--orange" href="https://school.x-mobile-musashikoyama.com/">教室サイトを見る</a><a class="btn btn--ghost" href="index.html">ほかのスライドを見る</a></div>
+</div></div></section>
+</div>
+<div class="nav">
+  <button class="prev">← もどる</button>
+  <div style="text-align:center">
+    <div class="counter">1 / 1</div>
+    <a class="home-link" href="index.html">スライド一覧へ</a>
+  </div>
+  <button class="next">つぎへ →</button>
+</div>
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const prev=document.querySelector('.prev'), next=document.querySelector('.next');
+  const counter=document.querySelector('.counter');
+  let i=Math.min(Math.max(parseInt(location.hash.slice(1))||1,1),slides.length)-1;
+  function show(n){
+    i=Math.min(Math.max(n,0),slides.length-1);
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    counter.textContent=(i+1)+' / '+slides.length;
+    prev.disabled=(i===0); next.disabled=(i===slides.length-1);
+    history.replaceState(null,'','#'+(i+1));
+  }
+  prev.onclick=()=>show(i-1); next.onclick=()=>show(i+1);
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown') show(i+1);
+    if(e.key==='ArrowLeft'||e.key==='PageUp') show(i-1);
+  });
+  let x0=null;
+  document.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',e=>{
+    if(x0===null) return;
+    const dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>60) show(i+(dx<0?1:-1));
+    x0=null;
+  },{passive:true});
+  show(i);
+</script>
+</body>
+</html>

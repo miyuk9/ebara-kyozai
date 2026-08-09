@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>はじめてのスマホ 全4回（スライド）｜荏原スマホパソコン教室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FDFCF8; --white:#FFFFFF;
+    --green:#1E4D3B; --green-dark:#143528;
+    --orange:#E8762C;
+    --ink:#26251F; --sub:#6E6A5E; --line:#E8E4D8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
+    color:var(--ink); background:var(--green-dark);
+    overflow:hidden;
+  }
+  .deck{position:fixed; inset:0 0 76px 0}
+  .slide{
+    position:absolute; inset:0; display:none; overflow-y:auto;
+    background:var(--bg); padding:clamp(20px,5vh,56px) clamp(18px,6vw,90px);
+  }
+  .slide.active{display:flex; flex-direction:column; justify-content:center}
+  .slide-inner{max-width:880px; margin:0 auto; width:100%}
+  .slide--dark{background:var(--green-dark); color:#fff}
+  .slide--section{background:var(--green); color:#fff}
+  .kicker{color:var(--orange); font-weight:700; letter-spacing:.14em; font-size:clamp(13px,1.8vw,17px); margin-bottom:10px}
+  h1{font-weight:900; font-size:clamp(30px,6vw,58px); line-height:1.3; font-feature-settings:"palt"}
+  .slide--dark h1,.slide--section h1{color:#fff}
+  .lead{font-size:clamp(16px,2.4vw,21px); line-height:1.9; margin-top:18px}
+  .slide--dark .lead{color:#EDE9DC}
+  h2{
+    font-weight:900; font-size:clamp(24px,3.6vw,38px); color:var(--green-dark);
+    font-feature-settings:"palt"; margin-bottom:clamp(14px,3vh,28px); line-height:1.35;
+    border-bottom:4px solid var(--green); padding-bottom:10px;
+  }
+  h2 .h2-kicker{display:block; font-size:clamp(12px,1.6vw,15px); color:var(--orange); letter-spacing:.14em; font-weight:700; margin-bottom:6px}
+  .steps{list-style:none; counter-reset:step}
+  .steps li{
+    background:var(--white); border:1px solid var(--line); border-radius:14px;
+    padding:clamp(10px,1.8vh,16px) 18px clamp(10px,1.8vh,16px) 58px; margin-bottom:12px;
+    position:relative; font-size:clamp(16px,2.4vw,22px); line-height:1.7;
+  }
+  .steps li::before{
+    content:counter(step); counter-increment:step;
+    position:absolute; left:18px; top:50%; transform:translateY(-50%);
+    color:var(--orange); font-weight:900; font-size:clamp(20px,3vw,28px);
+  }
+  .words{width:100%; border-collapse:collapse; background:var(--white); table-layout:fixed}
+  .words th,.words td{border:1px solid var(--line); padding:clamp(9px,1.6vh,14px) clamp(8px,1.6vw,16px); text-align:left; font-size:clamp(14px,2.2vw,20px); line-height:1.6; word-break:break-word; overflow-wrap:break-word}
+  .words th{background:var(--green); color:#fff; font-weight:700; width:31%}
+  .memo{
+    background:#F4F1E7; border-left:6px solid var(--orange);
+    border-radius:0 14px 14px 0; padding:clamp(10px,1.8vh,16px) 20px; margin-top:18px;
+    font-size:clamp(15px,2.2vw,19px); line-height:1.8;
+  }
+  .memo b{color:var(--green-dark)}
+  .aikotoba{
+    background:var(--green-dark); color:#fff; border-radius:18px;
+    padding:clamp(16px,3vh,28px) 24px; text-align:center;
+    font-size:clamp(24px,4.5vw,44px); font-weight:900; letter-spacing:.06em; line-height:1.5;
+  }
+  .aikotoba span{color:var(--orange)}
+  .check-list{list-style:none}
+  .check-list li{
+    font-size:clamp(17px,2.6vw,24px); line-height:1.7; margin-bottom:16px;
+    padding-left:44px; position:relative;
+  }
+  .check-list li::before{
+    content:""; position:absolute; left:4px; top:.28em;
+    width:24px; height:24px; border:3px solid var(--green); border-radius:7px; background:#fff;
+  }
+  .plain{font-size:clamp(17px,2.6vw,23px); line-height:2}
+  .nav{
+    position:fixed; left:0; right:0; bottom:0; height:76px;
+    background:var(--green-dark); display:flex; align-items:center;
+    justify-content:space-between; padding:0 clamp(12px,3vw,32px); gap:12px;
+  }
+  .nav button{
+    font-family:inherit; font-size:clamp(16px,2.2vw,19px); font-weight:700;
+    border:none; border-radius:999px; padding:12px clamp(20px,4vw,34px);
+    cursor:pointer; background:var(--orange); color:#fff;
+  }
+  .nav button.prev{background:rgba(255,255,255,.16); color:#fff}
+  .nav button:disabled{opacity:.35; cursor:default}
+  .counter{color:#CFE0D5; font-size:clamp(14px,2vw,17px); font-weight:700; letter-spacing:.06em}
+  .home-link{color:#CFE0D5; font-size:clamp(12px,1.8vw,15px); text-decoration:none; white-space:nowrap}
+  .home-link:hover{color:#fff}
+  .btn-row{margin-top:26px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center}
+  .btn{
+    display:inline-block; text-decoration:none; font-weight:700;
+    font-size:clamp(15px,2.2vw,19px); border-radius:999px; padding:13px 30px;
+  }
+  .btn--orange{background:var(--orange); color:#fff}
+  .btn--ghost{border:2px solid rgba(255,255,255,.5); color:#fff}
+</style>
+</head>
+<body>
+<div class="deck">
+<section class="slide slide--dark"><div class="slide-inner"><div style="text-align:center"><p class="kicker">EBARA SMARTPHONE &amp; PC SCHOOL</p><h1>はじめてのスマホ<br>全4回</h1><p class="lead">スパルタなし。詰め込みなし。<br>教室で使っているオリジナル教材のスライド版です。</p></div></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">この講座について</span>全4回で「使える」に変わります</h2><ol class="steps"><li>第1回　さわってみよう — 電話とカメラが使える</li><li>第2回　つながってみよう — LINEで写真が送れる</li><li>第3回　しらべてみよう・まもろう — 検索と地図、詐欺の見分け方</li><li>第4回　くらしに使ってみよう — キャッシュレスと手続きの入り口</li></ol></div></section>
+<section class="slide slide--section"><div class="slide-inner"><div style="text-align:center"><p class="kicker">第1回</p><h1>さわってみよう<br>（基本操作）</h1></div></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第1回</span>指の動きは3つだけ</h2><table class="words"><tr><th>タップ</th><td>トン、と1回かるく押す。「決定」の合図</td></tr><tr><th>スワイプ</th><td>指をつけたまま、なぞって動かす。「ページめくり」</td></tr><tr><th>ピンチ</th><td>2本の指で広げる・つまむ。「拡大・縮小」</td></tr></table><p class="memo"><b>あわてなくて大丈夫。</b>まちがえて何かが開いても、こわれません。「戻る」で必ず戻れます。</p></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第1回</span>電話をかける・受ける</h2><ol class="steps"><li>受話器のマーク（電話アプリ）をタップ</li><li>番号を押して、緑のボタンで発信</li><li>切るときは赤いボタン</li><li>よくかける人は「連絡先」に登録しておくとラク</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第1回</span>カメラで撮る・見る・消す</h2><ol class="steps"><li>カメラのマークをタップして、丸いボタンでパチリ</li><li>撮った写真は「写真（アルバム/ギャラリー）」で見られる</li><li>いらない写真はゴミ箱マークで消せる</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第1回</span>「できた！」チェック</h2><ul class="check-list"><li>タップ・スワイプ・ピンチができた</li><li>電話をかけて、切れた</li><li>写真を撮って、見られた</li></ul></div></section>
+<section class="slide slide--section"><div class="slide-inner"><div style="text-align:center"><p class="kicker">第2回</p><h1>つながってみよう<br>（LINE・連絡）</h1></div></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第2回</span>LINEってなに？</h2><p class="plain">メッセージ・写真・通話が<b>無料</b>でやりとりできるアプリです（通信量はかかります）。<br>家族や友だちとの連絡に、いちばん使われています。</p></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第2回</span>友だち追加（QRコードで）</h2><ol class="steps"><li>LINEを開いて「ホーム」→「友だち追加」をタップ</li><li>「QRコード」をタップして、相手のQRコードを写す</li><li>「追加」を押せば完了</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第2回</span>メッセージと写真を送る</h2><ol class="steps"><li>送りたい相手の名前をタップして「トーク」を開く</li><li>下の入力欄をタップして文字を打ち、紙飛行機マークで送信</li><li>写真は「＋」や写真マークから選んで送信</li><li>スタンプはニコニコマークから</li></ol><p class="memo"><b>「既読」とは</b>：相手が読むと表示されます。すぐ返事が来なくても、気にしなくて大丈夫。</p></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第2回</span>ビデオ通話に出てみる</h2><ol class="steps"><li>かかってきたら、カメラのマークをタップして応答</li><li>切るときは赤いボタン。お互いの顔を見ながら話せます</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第2回</span>「できた！」チェック</h2><ul class="check-list"><li>QRコードで友だち追加ができた</li><li>メッセージとスタンプを送れた</li><li>写真を送れた／ビデオ通話に出られた</li></ul></div></section>
+<section class="slide slide--section"><div class="slide-inner"><div style="text-align:center"><p class="kicker">第3回</p><h1>しらべてみよう・<br>まもろう</h1></div></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第3回</span>検索のコツは「ことば＋ことば」</h2><ol class="steps"><li>検索の窓をタップして、ことばを入れる（例：武蔵小山　眼科）</li><li>2つのことばの間は空白（スペース）で区切る</li><li>出てきた一覧から、見たいものをタップ</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第3回</span>地図で行き方を調べる</h2><ol class="steps"><li>地図アプリを開くと、青い点が「いまいる場所」</li><li>行き先の名前を入れて「経路」をタップ</li><li>電車・バス・徒歩の行き方と時間が出ます</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第3回</span>あんしん教室：あやしい画面</h2><table class="words"><tr><th>あやしいSMS</th><td>「荷物が届きません」「未納があります」→ 中のリンクは押さない</td></tr><tr><th>ニセの警告</th><td>「ウイルスに感染！」と大きな音や表示 → 慌てず画面を閉じる</td></tr><tr><th>暗証番号を聞く</th><td>電話・メールで聞いてくる正規の会社・役所はありません</td></tr></table></div></section>
+<section class="slide"><div class="slide-inner"><div class="aikotoba">押さない・慌てない・<span>相談する</span></div><p class="memo">判断に迷ったら、そのままの画面を持って相談してください。それがいちばん安全です。</p></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第3回</span>もしもの備え（防災）</h2><p class="plain">緊急速報（地震・大雨）はスマホが自動で知らせてくれます。<br>防災アプリや災害用伝言板も、入れておくと安心です。</p></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第3回</span>「できた！」チェック</h2><ul class="check-list"><li>「ことば＋ことば」で検索できた</li><li>地図で行き方を調べられた</li><li>あやしい画面の合いことばを言える</li></ul></div></section>
+<section class="slide slide--section"><div class="slide-inner"><div style="text-align:center"><p class="kicker">第4回</p><h1>くらしに使ってみよう<br>（決済・手続き）</h1></div></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第4回</span>QRコードを読み取る</h2><ol class="steps"><li>カメラを開いて、QRコードにかざす（押さなくてOK）</li><li>画面に出た枠や通知をタップすると、ページが開く</li><li>お店のメニュー・ポスター・回覧板でも使われています</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第4回</span>キャッシュレスってなに？</h2><table class="words"><tr><th>QRコード決済</th><td>スマホの画面を見せて払う（PayPayなど）</td></tr><tr><th>電子マネー</th><td>かざして払う（Suica・PASMOなど）</td></tr><tr><th>カード</th><td>クレジットカード・デビットカード</td></tr></table><p class="memo">ぜんぶ使う必要はありません。よく行くお店で使えるものを1つ選べば十分です。</p></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第4回</span>ネットで調べて、予約・注文する</h2><ol class="steps"><li>お店や病院を検索する（第3回の復習）</li><li>「予約」「注文」のボタンから、日時や品物を選ぶ</li><li>名前・電話番号を入れて確定。確認の画面は必ず読む</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第4回</span>行政手続きの入り口を知る</h2><p class="plain">マイナポータルや自治体のアプリで、証明書のこと・給付のお知らせ・ごみの日などが確認できます。<br>「スマホでできることがある」と知っておくだけで一歩前進です。</p></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">第4回</span>4回をとおしての「できた！」チェック</h2><ul class="check-list"><li>電話・カメラ・LINE・検索が自分でできた</li><li>QRコードを読み取れた</li><li>困ったときに相談する場所ができた</li></ul></div></section>
+<section class="slide slide--dark"><div class="slide-inner"><div style="text-align:center">
+<p class="kicker">EBARA SMARTPHONE &amp; PC SCHOOL</p>
+<h1 style="font-size:clamp(26px,4.5vw,44px)">続きは、教室で一緒に。</h1>
+<p class="lead">荏原スマホパソコン教室（エックスモバイル武蔵小山店内）<br>
+少人数でゆっくり。分からないことは、その場で質問できます。<br>講座・相談は完全予約制です。</p>
+<div class="btn-row"><a class="btn btn--orange" href="https://school.x-mobile-musashikoyama.com/">教室サイトを見る</a><a class="btn btn--ghost" href="index.html">ほかのスライドを見る</a></div>
+</div></div></section>
+</div>
+<div class="nav">
+  <button class="prev">← もどる</button>
+  <div style="text-align:center">
+    <div class="counter">1 / 1</div>
+    <a class="home-link" href="index.html">スライド一覧へ</a>
+  </div>
+  <button class="next">つぎへ →</button>
+</div>
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const prev=document.querySelector('.prev'), next=document.querySelector('.next');
+  const counter=document.querySelector('.counter');
+  let i=Math.min(Math.max(parseInt(location.hash.slice(1))||1,1),slides.length)-1;
+  function show(n){
+    i=Math.min(Math.max(n,0),slides.length-1);
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    counter.textContent=(i+1)+' / '+slides.length;
+    prev.disabled=(i===0); next.disabled=(i===slides.length-1);
+    history.replaceState(null,'','#'+(i+1));
+  }
+  prev.onclick=()=>show(i-1); next.onclick=()=>show(i+1);
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown') show(i+1);
+    if(e.key==='ArrowLeft'||e.key==='PageUp') show(i-1);
+  });
+  let x0=null;
+  document.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',e=>{
+    if(x0===null) return;
+    const dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>60) show(i+(dx<0?1:-1));
+    x0=null;
+  },{passive:true});
+  show(i);
+</script>
+</body>
+</html>
