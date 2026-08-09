@@ -7,66 +7,105 @@
 <meta name="description" content="荏原スマホパソコン教室のオリジナル講座スライド。はじめてのスマホ全4回・LINE講座・キャッシュレス講座・スマホあんしん講座を無料で公開しています。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#FDFCF8; --white:#FFFFFF; --green:#1E4D3B; --green-dark:#143528;
-    --orange:#E8762C; --ink:#26251F; --sub:#6E6A5E; --line:#E8E4D8;
+    --cream:#FFF8EC; --white:#FFFFFF;
+    --green:#2E7D5B; --green-deep:#1E4D3B; --green-dark:#143528; --green-soft:#E3F1E7;
+    --orange:#F08A3C; --orange-deep:#E8762C; --orange-soft:#FDEBD9;
+    --yellow:#F6C445; --yellow-soft:#FBF0D2;
+    --ink:#3A372E; --sub:#6E6A5E; --line:#F0E2C8;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif; color:var(--ink); background:var(--bg); line-height:1.9}
-  header{background:var(--green-dark); color:#fff; text-align:center; padding:clamp(40px,8vh,80px) 20px}
-  header .kicker{color:var(--orange); font-weight:700; letter-spacing:.14em; font-size:15px}
-  header h1{font-weight:900; font-size:clamp(28px,5.5vw,46px); margin:10px 0 14px; font-feature-settings:"palt"}
-  header p{color:#EDE9DC; font-size:clamp(15px,2.2vw,18px)}
-  main{max-width:780px; margin:0 auto; padding:clamp(28px,5vh,56px) 20px 60px}
+  body{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif; color:var(--ink);
+    background-color:var(--cream);
+    background-image:radial-gradient(#F2E5C8 1.5px, transparent 1.6px);
+    background-size:28px 28px; line-height:1.9}
+  header{background:var(--green-deep);
+    background-image:radial-gradient(rgba(255,255,255,.07) 1.5px, transparent 1.6px);
+    background-size:28px 28px;
+    color:#fff; text-align:center; padding:clamp(40px,8vh,80px) 20px 60px}
+  header .emoji{font-size:clamp(48px,9vw,72px); filter:drop-shadow(0 4px 0 rgba(0,0,0,.15))}
+  header .kicker{display:inline-block; background:var(--orange); color:#fff; font-weight:900;
+    letter-spacing:.1em; font-size:14px; border-radius:999px; padding:5px 20px; margin:12px 0}
+  header h1{font-weight:900; font-size:clamp(28px,5.5vw,46px); margin:6px 0 14px; font-feature-settings:"palt"}
+  header p{color:#F3EFDF; font-size:clamp(15px,2.2vw,18px); font-weight:500}
+  .wave{display:block; width:100%; height:36px; margin-top:-35px}
+  main{max-width:780px; margin:0 auto; padding:clamp(20px,4vh,44px) 20px 60px}
   .card{
-    display:block; text-decoration:none; color:inherit; background:var(--white);
-    border:1px solid var(--line); border-radius:18px; padding:22px 26px; margin-bottom:18px;
-    box-shadow:0 2px 24px rgba(20,53,40,.06); transition:transform .15s;
+    display:flex; gap:18px; align-items:center; text-decoration:none; color:inherit;
+    background:var(--white); border:2px solid var(--line); border-radius:24px;
+    padding:20px 24px; margin-bottom:18px;
+    box-shadow:0 4px 0 rgba(20,53,40,.07); transition:transform .15s;
   }
-  .card:hover{transform:translateY(-2px)}
-  .card .tag{color:var(--orange); font-weight:700; font-size:13px; letter-spacing:.1em}
-  .card h2{color:var(--green-dark); font-weight:900; font-size:clamp(20px,3.2vw,26px); margin:4px 0 6px; font-feature-settings:"palt"}
-  .card p{color:var(--sub); font-size:15.5px}
-  .card .go{color:var(--green); font-weight:700; font-size:15px; margin-top:8px; display:inline-block}
-  .note{font-size:14px; color:var(--sub); margin-top:26px}
-  footer{background:var(--green-dark); color:#CFE0D5; text-align:center; padding:30px 20px; font-size:14px}
-  footer a{color:#fff}
+  .card:hover{transform:translateY(-3px)}
+  .card .icon{
+    width:72px; height:72px; min-width:72px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:38px;
+    background:var(--green-soft); border:3px solid var(--yellow);
+  }
+  .card .tag{display:inline-block; background:var(--orange-soft); color:var(--orange-deep);
+    font-weight:900; font-size:12.5px; letter-spacing:.08em; border-radius:999px; padding:1px 12px}
+  .card h2{color:var(--green-dark); font-weight:900; font-size:clamp(19px,3.2vw,25px);
+    margin:4px 0 4px; font-feature-settings:"palt"; line-height:1.4}
+  .card p{color:var(--sub); font-size:14.5px; line-height:1.7}
+  .card .go{color:var(--orange-deep); font-weight:900; font-size:14.5px; margin-top:6px; display:inline-block}
+  .note{
+    background:var(--white); border:2px solid var(--yellow); border-radius:20px;
+    padding:14px 20px 14px 54px; font-size:14.5px; color:var(--ink);
+    margin-top:26px; position:relative; line-height:1.8;
+  }
+  .note::before{content:"💡"; position:absolute; left:16px; top:12px; font-size:24px}
+  footer{background:var(--green-dark); color:#CFE0D5; text-align:center; padding:32px 20px; font-size:14px; margin-top:40px}
+  footer a{color:#fff; font-weight:700}
+  @media (max-width:480px){ .card{flex-direction:column; text-align:center; gap:10px} }
 </style>
 </head>
 <body>
 <header>
-  <p class="kicker">EBARA SMARTPHONE &amp; PC SCHOOL</p>
+  <div class="emoji">📱✨</div>
+  <div><span class="kicker">むりょうで見られます</span></div>
   <h1>講座スライド一覧</h1>
-  <p>教室で使っているオリジナル教材を、どなたでも無料でご覧いただけます。</p>
+  <p>荏原スマホパソコン教室で使っている教材を、そのまま公開しています。</p>
 </header>
 <main>
   <a class="card" href="sumaho-kiso.html">
-    <span class="tag">グループレッスン</span>
-    <h2>はじめてのスマホ 全4回</h2>
-    <p>基本操作・LINE・検索と地図・詐欺対策・キャッシュレスまで。スマホの「使える」をまとめて。</p>
-    <span class="go">スライドを見る →</span>
+    <span class="icon">📱</span>
+    <span>
+      <span class="tag">グループレッスン</span>
+      <h2>はじめてのスマホ 全4回</h2>
+      <p>基本操作・LINE・検索と地図・詐欺対策・キャッシュレスまで。スマホの「使える」をまとめて。</p>
+      <span class="go">スライドを見る →</span>
+    </span>
   </a>
   <a class="card" href="ws-line.html">
-    <span class="tag">単発ワークショップ</span>
-    <h2>もっと使えるLINE講座</h2>
-    <p>グループトーク・アルバム・ビデオ通話の発信・通知の整理と迷惑対策。</p>
-    <span class="go">スライドを見る →</span>
+    <span class="icon">💬</span>
+    <span>
+      <span class="tag">単発ワークショップ</span>
+      <h2>もっと使えるLINE講座</h2>
+      <p>グループトーク・アルバム・ビデオ通話の発信・通知の整理と迷惑対策。</p>
+      <span class="go">スライドを見る →</span>
+    </span>
   </a>
   <a class="card" href="ws-cashless.html">
-    <span class="tag">単発ワークショップ</span>
-    <h2>はじめてのキャッシュレス講座</h2>
-    <p>QR決済・電子マネー・カードの違いと、「チャージ→払う」のしくみ。</p>
-    <span class="go">スライドを見る →</span>
+    <span class="icon">💳</span>
+    <span>
+      <span class="tag">単発ワークショップ</span>
+      <h2>はじめてのキャッシュレス講座</h2>
+      <p>QR決済・電子マネー・カードの違いと、「チャージ→払う」のしくみ。</p>
+      <span class="go">スライドを見る →</span>
+    </span>
   </a>
   <a class="card" href="ws-anzen.html">
-    <span class="tag">単発ワークショップ</span>
-    <h2>スマホあんしん講座</h2>
-    <p>詐欺SMS・ニセ警告の見分け方。合いことばは「押さない・慌てない・相談する」。</p>
-    <span class="go">スライドを見る →</span>
+    <span class="icon">🛡️</span>
+    <span>
+      <span class="tag">単発ワークショップ</span>
+      <h2>スマホあんしん講座</h2>
+      <p>詐欺SMS・ニセ警告の見分け方。合いことばは「押さない・慌てない・相談する」。</p>
+      <span class="go">スライドを見る →</span>
+    </span>
   </a>
-  <p class="note">スライドは矢印キー・画面下のボタン・スワイプでめくれます。実際の講座では、少人数でゆっくり手を動かしながら進めます。</p>
+  <p class="note">スライドは「つぎへ→」ボタン・矢印キー・スワイプでめくれます。実際の講座では、少人数でゆっくり手を動かしながら進めます。</p>
 </main>
 <footer>
   荏原スマホパソコン教室（エックスモバイル武蔵小山店内）<br>

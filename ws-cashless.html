@@ -6,113 +6,163 @@
 <title>はじめてのキャッシュレス講座（スライド）｜荏原スマホパソコン教室</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#FDFCF8; --white:#FFFFFF;
-    --green:#1E4D3B; --green-dark:#143528;
-    --orange:#E8762C;
-    --ink:#26251F; --sub:#6E6A5E; --line:#E8E4D8;
+    --cream:#FFF8EC; --white:#FFFFFF;
+    --green:#2E7D5B; --green-deep:#1E4D3B; --green-dark:#143528;
+    --green-soft:#E3F1E7;
+    --orange:#F08A3C; --orange-deep:#E8762C; --orange-soft:#FDEBD9;
+    --yellow:#F6C445; --yellow-soft:#FBF0D2;
+    --ink:#3A372E; --sub:#6E6A5E; --line:#F0E2C8;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{height:100%}
   body{
-    font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
+    font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Zen Kaku Gothic New",sans-serif;
     color:var(--ink); background:var(--green-dark);
     overflow:hidden;
   }
-  .deck{position:fixed; inset:0 0 76px 0}
+  .deck{position:fixed; inset:0 0 80px 0}
   .slide{
     position:absolute; inset:0; display:none; overflow-y:auto;
-    background:var(--bg); padding:clamp(20px,5vh,56px) clamp(18px,6vw,90px);
+    background-color:var(--cream);
+    background-image:radial-gradient(#F2E5C8 1.5px, transparent 1.6px);
+    background-size:28px 28px;
+    padding:clamp(20px,5vh,56px) clamp(18px,6vw,90px);
   }
   .slide.active{display:flex; flex-direction:column; justify-content:center}
   .slide-inner{max-width:880px; margin:0 auto; width:100%}
-  .slide--dark{background:var(--green-dark); color:#fff}
-  .slide--section{background:var(--green); color:#fff}
-  .kicker{color:var(--orange); font-weight:700; letter-spacing:.14em; font-size:clamp(13px,1.8vw,17px); margin-bottom:10px}
-  h1{font-weight:900; font-size:clamp(30px,6vw,58px); line-height:1.3; font-feature-settings:"palt"}
-  .slide--dark h1,.slide--section h1{color:#fff}
-  .lead{font-size:clamp(16px,2.4vw,21px); line-height:1.9; margin-top:18px}
-  .slide--dark .lead{color:#EDE9DC}
-  h2{
-    font-weight:900; font-size:clamp(24px,3.6vw,38px); color:var(--green-dark);
-    font-feature-settings:"palt"; margin-bottom:clamp(14px,3vh,28px); line-height:1.35;
-    border-bottom:4px solid var(--green); padding-bottom:10px;
+  .slide--dark{
+    background-color:var(--green-deep);
+    background-image:radial-gradient(rgba(255,255,255,.07) 1.5px, transparent 1.6px);
+    background-size:28px 28px; color:#fff;
   }
-  h2 .h2-kicker{display:block; font-size:clamp(12px,1.6vw,15px); color:var(--orange); letter-spacing:.14em; font-weight:700; margin-bottom:6px}
+  .slide--section{
+    background-color:var(--green-soft);
+    background-image:radial-gradient(rgba(46,125,91,.14) 1.5px, transparent 1.6px);
+    background-size:28px 28px;
+  }
+  .big-emoji{font-size:clamp(52px,11vw,92px); line-height:1.2; margin-bottom:8px;
+    filter:drop-shadow(0 4px 0 rgba(20,53,40,.12))}
+  .kicker{
+    display:inline-block; background:var(--orange); color:#fff;
+    font-weight:900; letter-spacing:.1em; font-size:clamp(14px,1.9vw,18px);
+    border-radius:999px; padding:6px 22px; margin-bottom:16px;
+  }
+  .slide--section .kicker{background:var(--green)}
+  h1{font-weight:900; font-size:clamp(30px,6vw,58px); line-height:1.35; font-feature-settings:"palt"}
+  .slide--dark h1{color:#fff}
+  .slide--section h1{color:var(--green-dark)}
+  .lead{font-size:clamp(16px,2.4vw,21px); line-height:2; margin-top:20px; font-weight:500}
+  .slide--dark .lead{color:#F3EFDF}
+  h2{display:flex; align-items:center; gap:clamp(12px,2vw,18px); margin-bottom:clamp(16px,3vh,28px)}
+  .h2-emoji{
+    width:clamp(52px,8vw,72px); height:clamp(52px,8vw,72px); min-width:clamp(52px,8vw,72px);
+    background:var(--white); border:3px solid var(--yellow); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:clamp(26px,4.2vw,38px); box-shadow:0 4px 0 rgba(20,53,40,.08);
+  }
+  .h2-body{flex:1}
+  .h2-kicker{
+    display:inline-block; background:var(--yellow-soft); color:#8A6A12;
+    border-radius:999px; padding:2px 14px; font-size:clamp(12px,1.7vw,15px);
+    font-weight:900; letter-spacing:.08em; margin-bottom:6px;
+  }
+  .h2-title{font-weight:900; font-size:clamp(23px,3.4vw,36px); color:var(--green-dark);
+    line-height:1.35; font-feature-settings:"palt"; display:block}
   .steps{list-style:none; counter-reset:step}
   .steps li{
-    background:var(--white); border:1px solid var(--line); border-radius:14px;
-    padding:clamp(10px,1.8vh,16px) 18px clamp(10px,1.8vh,16px) 58px; margin-bottom:12px;
-    position:relative; font-size:clamp(16px,2.4vw,22px); line-height:1.7;
+    background:var(--white); border:2px solid var(--line); border-radius:20px;
+    padding:clamp(11px,1.9vh,17px) 20px clamp(11px,1.9vh,17px) 64px; margin-bottom:12px;
+    position:relative; font-size:clamp(16px,2.4vw,22px); line-height:1.7; font-weight:500;
+    box-shadow:0 3px 0 rgba(20,53,40,.05);
   }
   .steps li::before{
     content:counter(step); counter-increment:step;
-    position:absolute; left:18px; top:50%; transform:translateY(-50%);
-    color:var(--orange); font-weight:900; font-size:clamp(20px,3vw,28px);
+    position:absolute; left:14px; top:50%; transform:translateY(-50%);
+    width:36px; height:36px; background:var(--orange); color:#fff;
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:900; font-size:19px; box-shadow:0 2px 0 rgba(20,53,40,.12);
   }
+  .words-wrap{border-radius:18px; overflow:hidden; border:2px solid var(--line);
+    box-shadow:0 3px 0 rgba(20,53,40,.05); background:var(--white)}
   .words{width:100%; border-collapse:collapse; background:var(--white); table-layout:fixed}
-  .words th,.words td{border:1px solid var(--line); padding:clamp(9px,1.6vh,14px) clamp(8px,1.6vw,16px); text-align:left; font-size:clamp(14px,2.2vw,20px); line-height:1.6; word-break:break-word; overflow-wrap:break-word}
-  .words th{background:var(--green); color:#fff; font-weight:700; width:31%}
+  .words th,.words td{border:1px solid var(--line); padding:clamp(9px,1.6vh,14px) clamp(8px,1.6vw,16px);
+    text-align:left; font-size:clamp(14px,2.2vw,20px); line-height:1.6;
+    word-break:break-word; overflow-wrap:break-word}
+  .words th{background:var(--green); color:#fff; font-weight:700; width:31%; border-color:rgba(255,255,255,.25)}
+  .words tr:first-child th{border-top:none} .words tr:first-child td{border-top:none}
+  .words tr:last-child th{border-bottom:none} .words tr:last-child td{border-bottom:none}
+  .words th:first-child{border-left:none} .words td:last-child{border-right:none}
   .memo{
-    background:#F4F1E7; border-left:6px solid var(--orange);
-    border-radius:0 14px 14px 0; padding:clamp(10px,1.8vh,16px) 20px; margin-top:18px;
-    font-size:clamp(15px,2.2vw,19px); line-height:1.8;
+    background:var(--white); border:2px solid var(--yellow); border-radius:20px;
+    padding:clamp(11px,1.9vh,16px) 20px clamp(11px,1.9vh,16px) 58px; margin-top:18px;
+    font-size:clamp(15px,2.2vw,19px); line-height:1.9; position:relative; font-weight:500;
+    box-shadow:0 3px 0 rgba(20,53,40,.05);
   }
+  .memo::before{content:"💡"; position:absolute; left:18px; top:clamp(9px,1.6vh,14px); font-size:26px}
   .memo b{color:var(--green-dark)}
   .aikotoba{
-    background:var(--green-dark); color:#fff; border-radius:18px;
-    padding:clamp(16px,3vh,28px) 24px; text-align:center;
+    background:var(--green-deep); color:#fff; border-radius:26px;
+    padding:clamp(18px,3.4vh,32px) 24px; text-align:center;
     font-size:clamp(24px,4.5vw,44px); font-weight:900; letter-spacing:.06em; line-height:1.5;
+    box-shadow:0 5px 0 rgba(20,53,40,.18);
   }
-  .aikotoba span{color:var(--orange)}
+  .aikotoba span{color:var(--yellow)}
+  .check-card{
+    background:var(--white); border:3px dashed var(--orange); border-radius:24px;
+    padding:clamp(16px,3vh,28px) clamp(18px,3vw,32px);
+    box-shadow:0 3px 0 rgba(20,53,40,.05);
+  }
   .check-list{list-style:none}
   .check-list li{
-    font-size:clamp(17px,2.6vw,24px); line-height:1.7; margin-bottom:16px;
-    padding-left:44px; position:relative;
+    font-size:clamp(17px,2.6vw,24px); line-height:1.7; margin-bottom:14px;
+    padding-left:46px; position:relative; font-weight:700; color:var(--green-dark);
   }
+  .check-list li:last-child{margin-bottom:0}
   .check-list li::before{
-    content:""; position:absolute; left:4px; top:.28em;
-    width:24px; height:24px; border:3px solid var(--green); border-radius:7px; background:#fff;
+    content:""; position:absolute; left:4px; top:.22em;
+    width:26px; height:26px; border:3px solid var(--green); border-radius:8px; background:var(--green-soft);
   }
-  .plain{font-size:clamp(17px,2.6vw,23px); line-height:2}
+  .plain{font-size:clamp(17px,2.6vw,23px); line-height:2.1; font-weight:500}
   .nav{
-    position:fixed; left:0; right:0; bottom:0; height:76px;
+    position:fixed; left:0; right:0; bottom:0; height:80px;
     background:var(--green-dark); display:flex; align-items:center;
     justify-content:space-between; padding:0 clamp(12px,3vw,32px); gap:12px;
   }
   .nav button{
-    font-family:inherit; font-size:clamp(16px,2.2vw,19px); font-weight:700;
-    border:none; border-radius:999px; padding:12px clamp(20px,4vw,34px);
+    font-family:inherit; font-size:clamp(16px,2.2vw,20px); font-weight:900;
+    border:none; border-radius:999px; padding:14px clamp(20px,4vw,38px);
     cursor:pointer; background:var(--orange); color:#fff;
+    box-shadow:0 3px 0 rgba(0,0,0,.25);
   }
-  .nav button.prev{background:rgba(255,255,255,.16); color:#fff}
+  .nav button.prev{background:rgba(255,255,255,.18); box-shadow:none}
   .nav button:disabled{opacity:.35; cursor:default}
   .counter{color:#CFE0D5; font-size:clamp(14px,2vw,17px); font-weight:700; letter-spacing:.06em}
   .home-link{color:#CFE0D5; font-size:clamp(12px,1.8vw,15px); text-decoration:none; white-space:nowrap}
   .home-link:hover{color:#fff}
-  .btn-row{margin-top:26px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center}
+  .btn-row{margin-top:28px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center}
   .btn{
-    display:inline-block; text-decoration:none; font-weight:700;
-    font-size:clamp(15px,2.2vw,19px); border-radius:999px; padding:13px 30px;
+    display:inline-block; text-decoration:none; font-weight:900;
+    font-size:clamp(15px,2.2vw,19px); border-radius:999px; padding:14px 32px;
   }
-  .btn--orange{background:var(--orange); color:#fff}
-  .btn--ghost{border:2px solid rgba(255,255,255,.5); color:#fff}
+  .btn--orange{background:var(--orange); color:#fff; box-shadow:0 3px 0 rgba(0,0,0,.25)}
+  .btn--ghost{border:2px solid rgba(255,255,255,.55); color:#fff}
 </style>
 </head>
 <body>
 <div class="deck">
-<section class="slide slide--dark"><div class="slide-inner"><div style="text-align:center"><p class="kicker">単発ワークショップ</p><h1>はじめての<br>キャッシュレス講座</h1><p class="lead">しくみが分かれば、こわくない。<br>「払う動き」を体験して覚えます。</p></div></div></section>
-<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">基本</span>キャッシュレスは3種類だけ</h2><table class="words"><tr><th>QRコード決済</th><td>スマホの画面を見せる／お店のQRを読む（PayPayなど）</td></tr><tr><th>電子マネー</th><td>スマホやカードをかざす（Suica・PASMO・WAONなど）</td></tr><tr><th>カード</th><td>クレジットカード・デビットカード</td></tr></table><p class="memo"><b>ぜんぶ使う必要はありません。</b>よく行くお店で使えるものを1つ。現金と併用でかまいません。</p></div></section>
-<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">しくみ</span>「チャージ → 払う」</h2><ol class="steps"><li>先にお金を入れておく（チャージ）。入れた分しか使えないので安心</li><li>レジで「ペイペイで」など、使うものを伝える</li><li><b>見せる</b>（自分のバーコード）か、<b>読む</b>（お店のQR＋金額入力）</li></ol></div></section>
-<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">体験</span>店頭での払い方</h2><ol class="steps"><li>アプリを開いて、バーコード画面を出す練習</li><li>お店のQRを読み取って、金額を入力する練習</li><li>払い終わると画面と音で確認できる。履歴にも残る</li></ol></div></section>
-<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">チャージ</span>お金の入れ方（種類だけ）</h2><table class="words"><tr><th>現金で</th><td>コンビニのATMやレジから。いちばん分かりやすい</td></tr><tr><th>銀行口座から</th><td>アプリと口座をつなぐ。設定はゆっくり個別にやるのが安心</td></tr><tr><th>オートチャージ</th><td>自動で補充。便利だが、まずは手動で慣れてから</td></tr></table></div></section>
-<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">あんしん</span>設定と習慣</h2><ol class="steps"><li>スマホに画面ロック（パスコード・指紋）をかけておく</li><li>チャージは少額から。上限も設定できる</li><li>ときどき「履歴」を見て確認</li><li>なくしたら、すぐ相談。止める手続きがあります</li></ol></div></section>
-<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">Q&amp;A</span>よくある不安に答えます</h2><table class="words"><tr><th>お金が消えない？</th><td>残高は履歴で確認できます。勝手に減ることはありません</td></tr><tr><th>電池が切れたら？</th><td>払えなくなるので、現金も少し持っておくのが現実的</td></tr><tr><th>ポイントって？</th><td>払った額に応じて貯まる、おまけと考えれば十分</td></tr></table></div></section>
-<section class="slide"><div class="slide-inner"><h2><span class="h2-kicker">まとめ</span>「できた！」チェック</h2><ul class="check-list"><li>3種類の違いを人に説明できる</li><li>バーコードを見せる動きができた</li><li>QRを読んで金額を入れられた</li><li>あんしんのための習慣が分かった</li></ul></div></section>
+<section class="slide slide--dark"><div class="slide-inner"><div style="text-align:center"><div class="big-emoji">💳</div><p class="kicker">単発ワークショップ</p><h1>はじめての<br>キャッシュレス講座</h1><p class="lead">しくみが分かれば、こわくない。<br>「払う動き」を体験して覚えます。</p></div></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">💳</span><span class="h2-body"><span class="h2-kicker">基本</span><span class="h2-title">キャッシュレスは3種類だけ</span></span></h2><div class="words-wrap"><table class="words"><tr><th>QRコード決済</th><td>スマホの画面を見せる／お店のQRを読む（PayPayなど）</td></tr><tr><th>電子マネー</th><td>スマホやカードをかざす（Suica・PASMO・WAONなど）</td></tr><tr><th>カード</th><td>クレジットカード・デビットカード</td></tr></table></div><p class="memo"><b>ぜんぶ使う必要はありません。</b>よく行くお店で使えるものを1つ。現金と併用でかまいません。</p></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">🔄</span><span class="h2-body"><span class="h2-kicker">しくみ</span><span class="h2-title">「チャージ → 払う」</span></span></h2><ol class="steps"><li>先にお金を入れておく（チャージ）。入れた分しか使えないので安心</li><li>レジで「ペイペイで」など、使うものを伝える</li><li><b>見せる</b>（自分のバーコード）か、<b>読む</b>（お店のQR＋金額入力）</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">🛍️</span><span class="h2-body"><span class="h2-kicker">体験</span><span class="h2-title">店頭での払い方</span></span></h2><ol class="steps"><li>アプリを開いて、バーコード画面を出す練習</li><li>お店のQRを読み取って、金額を入力する練習</li><li>払い終わると画面と音で確認できる。履歴にも残る</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">💰</span><span class="h2-body"><span class="h2-kicker">チャージ</span><span class="h2-title">お金の入れ方（種類だけ）</span></span></h2><div class="words-wrap"><table class="words"><tr><th>現金で</th><td>コンビニのATMやレジから。いちばん分かりやすい</td></tr><tr><th>銀行口座から</th><td>アプリと口座をつなぐ。設定はゆっくり個別にやるのが安心</td></tr><tr><th>オートチャージ</th><td>自動で補充。便利だが、まずは手動で慣れてから</td></tr></table></div></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">🔒</span><span class="h2-body"><span class="h2-kicker">あんしん</span><span class="h2-title">設定と習慣</span></span></h2><ol class="steps"><li>スマホに画面ロック（パスコード・指紋）をかけておく</li><li>チャージは少額から。上限も設定できる</li><li>ときどき「履歴」を見て確認</li><li>なくしたら、すぐ相談。止める手続きがあります</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">❓</span><span class="h2-body"><span class="h2-kicker">Q&amp;A</span><span class="h2-title">よくある不安に答えます</span></span></h2><div class="words-wrap"><table class="words"><tr><th>お金が消えない？</th><td>残高は履歴で確認できます。勝手に減ることはありません</td></tr><tr><th>電池が切れたら？</th><td>払えなくなるので、現金も少し持っておくのが現実的</td></tr><tr><th>ポイントって？</th><td>払った額に応じて貯まる、おまけと考えれば十分</td></tr></table></div></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">✅</span><span class="h2-body"><span class="h2-kicker">まとめ</span><span class="h2-title">「できた！」チェック</span></span></h2><div class="check-card"><ul class="check-list"><li>3種類の違いを人に説明できる</li><li>バーコードを見せる動きができた</li><li>QRを読んで金額を入れられた</li><li>あんしんのための習慣が分かった</li></ul></div></div></section>
 <section class="slide slide--dark"><div class="slide-inner"><div style="text-align:center">
-<p class="kicker">EBARA SMARTPHONE &amp; PC SCHOOL</p>
+<div class="big-emoji">🍀</div>
 <h1 style="font-size:clamp(26px,4.5vw,44px)">続きは、教室で一緒に。</h1>
 <p class="lead">荏原スマホパソコン教室（エックスモバイル武蔵小山店内）<br>
 少人数でゆっくり。分からないことは、その場で質問できます。<br>講座・相談は完全予約制です。</p>
@@ -123,7 +173,7 @@
   <button class="prev">← もどる</button>
   <div style="text-align:center">
     <div class="counter">1 / 1</div>
-    <a class="home-link" href="index.html">スライド一覧へ</a>
+    <a class="home-link" href="index.html">🏠 スライド一覧へ</a>
   </div>
   <button class="next">つぎへ →</button>
 </div>
