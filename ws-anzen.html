@@ -149,14 +149,105 @@
   }
   .btn--orange{background:var(--orange); color:#fff; box-shadow:0 3px 0 rgba(0,0,0,.25)}
   .btn--ghost{border:2px solid rgba(255,255,255,.55); color:#fff}
+
+  /* ---- スマホ画面モック ---- */
+  .duo{display:flex; gap:clamp(18px,3vw,40px); align-items:center}
+  .duo-main{flex:1; min-width:0}
+  .phone-wrap{margin:0 auto}
+  .phone{
+    width:clamp(190px,23vw,235px); min-width:190px; margin:0 auto;
+    background:#2E2B28; border-radius:36px; padding:10px 9px;
+    box-shadow:0 8px 0 rgba(20,53,40,.16);
+  }
+  .phone .screen{
+    background:#FFFFFF; border-radius:26px; overflow:hidden;
+    display:flex; flex-direction:column; height:clamp(330px,44vh,420px);
+    font-size:13px; line-height:1.55; position:relative;
+  }
+  .scr-bar{background:var(--green); color:#fff; font-weight:700; text-align:center;
+    padding:8px 6px; font-size:13.5px; letter-spacing:.04em}
+  .scr-body{flex:1; padding:12px 10px; background:#F5F7F5; position:relative; overflow:hidden}
+  .scr-body--dark{background:#20241F; color:#fff}
+  .phone-cap{text-align:center; font-size:clamp(12px,1.7vw,14.5px); font-weight:700;
+    color:var(--green-dark); margin-top:10px}
+  .phone-note{text-align:center; font-size:11.5px; color:var(--sub); margin-top:2px}
+  .here{position:relative; display:inline-flex}
+  .here::before{content:""; position:absolute; inset:-7px; border:3px dashed var(--orange-deep);
+    border-radius:50%; pointer-events:none}
+  .here--rect::before{border-radius:14px}
+  .here::after{content:"ここ！"; position:absolute; left:50%; transform:translateX(-50%);
+    bottom:-26px; background:var(--orange-deep); color:#fff; font-weight:900;
+    font-size:11px; padding:2px 10px; border-radius:999px; white-space:nowrap; z-index:2}
+  .num-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin:2px 14px}
+  .numkey{background:#fff; border:1px solid #E3E3E0; border-radius:50%; aspect-ratio:1;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px}
+  .callbtn{width:46px; height:46px; background:#37B26C; border-radius:50%; color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:20px; margin:14px auto 0}
+  .cam-view{position:absolute; inset:0 0 58px 0; background:#3A423B;
+    display:flex; align-items:center; justify-content:center; font-size:52px}
+  .cam-ctl{position:absolute; left:0; right:0; bottom:0; height:58px; background:#181A18;
+    display:flex; align-items:center; justify-content:center}
+  .shutter{width:38px; height:38px; background:#fff; border:3px solid #B9B9B9; border-radius:50%}
+  .qr-frame{position:absolute; inset:36px 30px 94px 30px; border:3px solid rgba(255,255,255,.9);
+    border-radius:14px; display:flex; align-items:center; justify-content:center; background:#fff}
+  .bub{max-width:82%; padding:7px 10px; border-radius:14px; margin-bottom:8px; font-size:12.5px;
+    position:relative; width:fit-content}
+  .bub--l{background:#fff; border:1px solid #E5E5E1}
+  .bub--r{background:#CDEBB9; margin-left:auto}
+  .bub .name{display:block; font-size:10px; color:var(--sub); margin-bottom:1px}
+  .chat-input{position:absolute; left:8px; right:8px; bottom:8px; background:#fff;
+    border:1px solid #E0E0DC; border-radius:999px; padding:6px 8px 6px 14px;
+    display:flex; align-items:center; justify-content:space-between; color:#9A968A; font-size:12px}
+  .sendbtn{width:28px; height:28px; background:var(--green); color:#fff; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:13px}
+  .mockbtn{display:block; background:#37B26C; color:#fff; text-align:center; font-weight:900;
+    border-radius:12px; padding:9px 0; margin:14px 18px 0; font-size:14px}
+  .searchbar{background:#fff; border:2px solid var(--green); border-radius:999px;
+    padding:7px 12px; font-size:12.5px; font-weight:700; display:flex; gap:6px; align-items:center}
+  .result{background:#fff; border:1px solid #E5E5E1; border-radius:12px; padding:7px 10px;
+    margin-top:8px; font-size:12px}
+  .result b{color:var(--green-dark)}
+  .result .sub{color:var(--sub); font-size:11px}
+  .avatar-big{width:74px; height:74px; border-radius:50%; background:#F3E2C7;
+    display:flex; align-items:center; justify-content:center; font-size:44px; margin:26px auto 8px}
+  .call-actions{position:absolute; left:0; right:0; bottom:22px; display:flex; justify-content:space-evenly}
+  .call-x,.call-ok{width:48px; height:48px; border-radius:50%; display:flex;
+    align-items:center; justify-content:center; font-size:21px; color:#fff}
+  .call-x{background:#E25B4A} .call-ok{background:#37B26C}
+  .warnbox{background:#fff; border-top:8px solid #D64541; border-radius:12px;
+    box-shadow:0 4px 14px rgba(0,0,0,.2); padding:12px 10px; margin-top:26px; text-align:center}
+  .warnbox .warn-title{color:#D64541; font-weight:900; font-size:14px}
+  .warnbox .warn-btn{display:inline-block; background:#D64541; color:#fff; font-weight:900;
+    border-radius:10px; padding:7px 16px; margin-top:10px; font-size:12.5px}
+  .badstamp{position:absolute; z-index:3; background:#D64541; color:#fff; font-weight:900;
+    border-radius:999px; padding:4px 12px; font-size:12.5px; box-shadow:0 3px 0 rgba(0,0,0,.2);
+    transform:rotate(-6deg)}
+  .barcode{height:64px; margin:16px 14px 6px; border-radius:6px;
+    background:repeating-linear-gradient(90deg,#222 0 3px,#fff 3px 5px,#222 5px 6px,#fff 6px 10px,#222 10px 12px,#fff 12px 15px)}
+  .barcode-num{text-align:center; letter-spacing:.2em; font-size:12px; color:#444}
+  .balance{background:#fff; border-radius:12px; border:1px solid #E5E5E1; margin:4px 14px;
+    padding:8px 12px; display:flex; justify-content:space-between; font-size:12.5px}
+  .balance b{color:var(--green-dark)}
+  .maplayer{position:absolute; inset:0; background:#E6EFE2}
+  .road{position:absolute; background:#fff}
+  .map-pin{position:absolute; font-size:26px; filter:drop-shadow(0 2px 1px rgba(0,0,0,.25))}
+  .map-me{position:absolute; width:16px; height:16px; background:#3D8BFD; border:3px solid #fff;
+    border-radius:50%; box-shadow:0 1px 4px rgba(0,0,0,.3)}
+  .map-route{position:absolute; inset:0; width:100%; height:100%}
+  .map-eta{position:absolute; left:10px; right:10px; bottom:10px; background:#fff; border-radius:12px;
+    padding:7px 12px; font-size:12px; font-weight:700; box-shadow:0 2px 8px rgba(0,0,0,.12)}
+  @media (max-width:640px){
+    .duo{flex-direction:column}
+    .duo .phone-wrap{order:-1}
+  }
 </style>
 </head>
 <body>
 <div class="deck">
 <section class="slide slide--dark"><div class="slide-inner"><div style="text-align:center"><div class="big-emoji">🛡️</div><p class="kicker">単発ワークショップ</p><h1>スマホあんしん講座</h1><p class="lead">あやしい画面を見分けられるようになる。<br>困ったときの相談先を持って帰る講座です。</p></div></div></section>
 <section class="slide"><div class="slide-inner"><div style="text-align:center"><div class="big-emoji">🙅</div></div><div class="aikotoba">押さない・慌てない・<span>相談する</span></div><p class="memo">この合いことばを覚えて帰るのが、きょうのいちばんの目標です。</p></div></section>
-<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">⚠️</span><span class="h2-body"><span class="h2-kicker">実例</span><span class="h2-title">よくある手口</span></span></h2><div class="words-wrap"><table class="words"><tr><th>荷物SMS</th><td>「お荷物のお届けができません」→ 偽サイトへ誘導</td></tr><tr><th>未納・料金SMS</th><td>「未納料金があります」「本日中に」→ 急がせるのが手口</td></tr><tr><th>ニセの警告画面</th><td>「ウイルスに感染！」と大音量 → 見た目だけの脅し</td></tr><tr><th>サポート詐欺</th><td>画面の電話番号にかけさせる → 正規の会社は番号を出しません</td></tr><tr><th>投資・儲け話</th><td>「必ず儲かる」→ 必ず儲かる話は存在しません</td></tr></table></div></div></section>
-<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">🔍</span><span class="h2-body"><span class="h2-kicker">見分け方</span><span class="h2-title">3つの確認ポイント</span></span></h2><ol class="steps"><li>心当たりがあるか？（注文していない荷物の通知はおかしい）</li><li>急がせていないか？（「本日中」「今すぐ」は疑う合図）</li><li>リンクを押す前に止まる。公式アプリや電話帳の番号から確かめる</li></ol><p class="memo"><b>共通点は「急がせる」「不安にさせる」。</b>本物の会社や役所は、SMSひとつで支払いを迫りません。</p></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">⚠️</span><span class="h2-body"><span class="h2-kicker">実例</span><span class="h2-title">よくある手口</span></span></h2><div class="duo"><div class="duo-main"><div class="words-wrap"><table class="words"><tr><th>荷物SMS</th><td>「お荷物のお届けができません」→ 偽サイトへ誘導</td></tr><tr><th>未納・料金SMS</th><td>「未納料金があります」「本日中に」→ 急がせるのが手口</td></tr><tr><th>ニセの警告画面</th><td>「ウイルスに感染！」と大音量 → 見た目だけの脅し</td></tr><tr><th>サポート詐欺</th><td>画面の電話番号にかけさせる → 正規の会社は番号を出しません</td></tr><tr><th>投資・儲け話</th><td>「必ず儲かる」→ 必ず儲かる話は存在しません</td></tr></table></div></div><div class="phone-wrap"><div class="phone"><div class="screen"><div class="scr-bar">メッセージ</div><div class="scr-body"><div class="bub bub--l" style="max-width:92%"><span class="name">＋81 80-XXXX-XXXX</span>お客様のお荷物のお届けができませんでした。本日中にこちらからご確認ください<br><span style="color:#2B6CB0;text-decoration:underline">http://takuhai-xx.abc</span></div><span class="badstamp" style="right:8px;top:86px">押さない！</span><p style="font-size:11px;color:#6E6A5E;margin-top:14px">心当たりのない荷物・料金の連絡は、まず疑う。</p></div></div></div><p class="phone-cap">実際はこんな見た目</p><p class="phone-note">※画面はイメージです</p></div></div></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">🔍</span><span class="h2-body"><span class="h2-kicker">見分け方</span><span class="h2-title">3つの確認ポイント</span></span></h2><div class="duo"><div class="duo-main"><ol class="steps"><li>心当たりがあるか？（注文していない荷物の通知はおかしい）</li><li>急がせていないか？（「本日中」「今すぐ」は疑う合図）</li><li>リンクを押す前に止まる。公式アプリや電話帳の番号から確かめる</li></ol></div><div class="phone-wrap"><div class="phone"><div class="screen"><div class="scr-bar">インターネット</div><div class="scr-body"><p style="font-size:11px;color:#9A968A;background:#fff;border-radius:8px;padding:4px 8px">🌐 www.example-xx.abc</p><div class="warnbox"><p class="warn-title">⚠ ウイルスに感染しました！</p><p style="font-size:11.5px;margin-top:4px">今すぐ下のボタンを押して<br>対処してください</p><span class="warn-btn">今すぐ対処する</span></div><span class="badstamp" style="right:6px;bottom:64px">押さない！</span><p style="font-size:11px;color:#6E6A5E;margin-top:18px;text-align:center">大きな音が出ても、見た目だけ。<br>慌てず画面を閉じればOK。</p></div></div></div><p class="phone-cap">ニセの警告画面の例</p><p class="phone-note">※画面はイメージです</p></div></div><p class="memo"><b>共通点は「急がせる」「不安にさせる」。</b>本物の会社や役所は、SMSひとつで支払いを迫りません。</p></div></section>
 <section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">🔒</span><span class="h2-body"><span class="h2-kicker">ふだんの備え</span><span class="h2-title">3つの習慣</span></span></h2><ol class="steps"><li><b>画面ロック</b>：パスコードや指紋を必ず設定</li><li><b>アップデート</b>：更新は「防犯設備の点検」。ためこまない</li><li><b>パスワード</b>：使い回しを避ける。紙のノートで家に保管も立派な管理法</li></ol></div></section>
 <section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">🆘</span><span class="h2-body"><span class="h2-kicker">もしも</span><span class="h2-title">押してしまったら</span></span></h2><ol class="steps"><li>慌てて入力しない。カード番号・暗証番号を入れていなければ、まず大丈夫</li><li>画面はそのままでいいので、スマホごと相談へ</li><li>お金の被害が出たら：消費者ホットライン<b>188</b>／警察相談専用電話<b>#9110</b></li></ol><p class="memo"><b>押してしまうのは、恥ずかしいことではありません。</b>早く見せてくれた人ほど早く解決しています。</p></div></section>
 <section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">✅</span><span class="h2-body"><span class="h2-kicker">まとめ</span><span class="h2-title">「できた！」チェック</span></span></h2><div class="check-card"><ul class="check-list"><li>合いことばを言える（押さない・慌てない・相談する）</li><li>「急がせる」が疑う合図だと分かった</li><li>画面ロックとアップデートを確認した</li><li>188と#9110を覚えて帰る</li></ul></div></div></section>

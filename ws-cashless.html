@@ -149,14 +149,105 @@
   }
   .btn--orange{background:var(--orange); color:#fff; box-shadow:0 3px 0 rgba(0,0,0,.25)}
   .btn--ghost{border:2px solid rgba(255,255,255,.55); color:#fff}
+
+  /* ---- スマホ画面モック ---- */
+  .duo{display:flex; gap:clamp(18px,3vw,40px); align-items:center}
+  .duo-main{flex:1; min-width:0}
+  .phone-wrap{margin:0 auto}
+  .phone{
+    width:clamp(190px,23vw,235px); min-width:190px; margin:0 auto;
+    background:#2E2B28; border-radius:36px; padding:10px 9px;
+    box-shadow:0 8px 0 rgba(20,53,40,.16);
+  }
+  .phone .screen{
+    background:#FFFFFF; border-radius:26px; overflow:hidden;
+    display:flex; flex-direction:column; height:clamp(330px,44vh,420px);
+    font-size:13px; line-height:1.55; position:relative;
+  }
+  .scr-bar{background:var(--green); color:#fff; font-weight:700; text-align:center;
+    padding:8px 6px; font-size:13.5px; letter-spacing:.04em}
+  .scr-body{flex:1; padding:12px 10px; background:#F5F7F5; position:relative; overflow:hidden}
+  .scr-body--dark{background:#20241F; color:#fff}
+  .phone-cap{text-align:center; font-size:clamp(12px,1.7vw,14.5px); font-weight:700;
+    color:var(--green-dark); margin-top:10px}
+  .phone-note{text-align:center; font-size:11.5px; color:var(--sub); margin-top:2px}
+  .here{position:relative; display:inline-flex}
+  .here::before{content:""; position:absolute; inset:-7px; border:3px dashed var(--orange-deep);
+    border-radius:50%; pointer-events:none}
+  .here--rect::before{border-radius:14px}
+  .here::after{content:"ここ！"; position:absolute; left:50%; transform:translateX(-50%);
+    bottom:-26px; background:var(--orange-deep); color:#fff; font-weight:900;
+    font-size:11px; padding:2px 10px; border-radius:999px; white-space:nowrap; z-index:2}
+  .num-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin:2px 14px}
+  .numkey{background:#fff; border:1px solid #E3E3E0; border-radius:50%; aspect-ratio:1;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px}
+  .callbtn{width:46px; height:46px; background:#37B26C; border-radius:50%; color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:20px; margin:14px auto 0}
+  .cam-view{position:absolute; inset:0 0 58px 0; background:#3A423B;
+    display:flex; align-items:center; justify-content:center; font-size:52px}
+  .cam-ctl{position:absolute; left:0; right:0; bottom:0; height:58px; background:#181A18;
+    display:flex; align-items:center; justify-content:center}
+  .shutter{width:38px; height:38px; background:#fff; border:3px solid #B9B9B9; border-radius:50%}
+  .qr-frame{position:absolute; inset:36px 30px 94px 30px; border:3px solid rgba(255,255,255,.9);
+    border-radius:14px; display:flex; align-items:center; justify-content:center; background:#fff}
+  .bub{max-width:82%; padding:7px 10px; border-radius:14px; margin-bottom:8px; font-size:12.5px;
+    position:relative; width:fit-content}
+  .bub--l{background:#fff; border:1px solid #E5E5E1}
+  .bub--r{background:#CDEBB9; margin-left:auto}
+  .bub .name{display:block; font-size:10px; color:var(--sub); margin-bottom:1px}
+  .chat-input{position:absolute; left:8px; right:8px; bottom:8px; background:#fff;
+    border:1px solid #E0E0DC; border-radius:999px; padding:6px 8px 6px 14px;
+    display:flex; align-items:center; justify-content:space-between; color:#9A968A; font-size:12px}
+  .sendbtn{width:28px; height:28px; background:var(--green); color:#fff; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:13px}
+  .mockbtn{display:block; background:#37B26C; color:#fff; text-align:center; font-weight:900;
+    border-radius:12px; padding:9px 0; margin:14px 18px 0; font-size:14px}
+  .searchbar{background:#fff; border:2px solid var(--green); border-radius:999px;
+    padding:7px 12px; font-size:12.5px; font-weight:700; display:flex; gap:6px; align-items:center}
+  .result{background:#fff; border:1px solid #E5E5E1; border-radius:12px; padding:7px 10px;
+    margin-top:8px; font-size:12px}
+  .result b{color:var(--green-dark)}
+  .result .sub{color:var(--sub); font-size:11px}
+  .avatar-big{width:74px; height:74px; border-radius:50%; background:#F3E2C7;
+    display:flex; align-items:center; justify-content:center; font-size:44px; margin:26px auto 8px}
+  .call-actions{position:absolute; left:0; right:0; bottom:22px; display:flex; justify-content:space-evenly}
+  .call-x,.call-ok{width:48px; height:48px; border-radius:50%; display:flex;
+    align-items:center; justify-content:center; font-size:21px; color:#fff}
+  .call-x{background:#E25B4A} .call-ok{background:#37B26C}
+  .warnbox{background:#fff; border-top:8px solid #D64541; border-radius:12px;
+    box-shadow:0 4px 14px rgba(0,0,0,.2); padding:12px 10px; margin-top:26px; text-align:center}
+  .warnbox .warn-title{color:#D64541; font-weight:900; font-size:14px}
+  .warnbox .warn-btn{display:inline-block; background:#D64541; color:#fff; font-weight:900;
+    border-radius:10px; padding:7px 16px; margin-top:10px; font-size:12.5px}
+  .badstamp{position:absolute; z-index:3; background:#D64541; color:#fff; font-weight:900;
+    border-radius:999px; padding:4px 12px; font-size:12.5px; box-shadow:0 3px 0 rgba(0,0,0,.2);
+    transform:rotate(-6deg)}
+  .barcode{height:64px; margin:16px 14px 6px; border-radius:6px;
+    background:repeating-linear-gradient(90deg,#222 0 3px,#fff 3px 5px,#222 5px 6px,#fff 6px 10px,#222 10px 12px,#fff 12px 15px)}
+  .barcode-num{text-align:center; letter-spacing:.2em; font-size:12px; color:#444}
+  .balance{background:#fff; border-radius:12px; border:1px solid #E5E5E1; margin:4px 14px;
+    padding:8px 12px; display:flex; justify-content:space-between; font-size:12.5px}
+  .balance b{color:var(--green-dark)}
+  .maplayer{position:absolute; inset:0; background:#E6EFE2}
+  .road{position:absolute; background:#fff}
+  .map-pin{position:absolute; font-size:26px; filter:drop-shadow(0 2px 1px rgba(0,0,0,.25))}
+  .map-me{position:absolute; width:16px; height:16px; background:#3D8BFD; border:3px solid #fff;
+    border-radius:50%; box-shadow:0 1px 4px rgba(0,0,0,.3)}
+  .map-route{position:absolute; inset:0; width:100%; height:100%}
+  .map-eta{position:absolute; left:10px; right:10px; bottom:10px; background:#fff; border-radius:12px;
+    padding:7px 12px; font-size:12px; font-weight:700; box-shadow:0 2px 8px rgba(0,0,0,.12)}
+  @media (max-width:640px){
+    .duo{flex-direction:column}
+    .duo .phone-wrap{order:-1}
+  }
 </style>
 </head>
 <body>
 <div class="deck">
 <section class="slide slide--dark"><div class="slide-inner"><div style="text-align:center"><div class="big-emoji">💳</div><p class="kicker">単発ワークショップ</p><h1>はじめての<br>キャッシュレス講座</h1><p class="lead">しくみが分かれば、こわくない。<br>「払う動き」を体験して覚えます。</p></div></div></section>
 <section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">💳</span><span class="h2-body"><span class="h2-kicker">基本</span><span class="h2-title">キャッシュレスは3種類だけ</span></span></h2><div class="words-wrap"><table class="words"><tr><th>QRコード決済</th><td>スマホの画面を見せる／お店のQRを読む（PayPayなど）</td></tr><tr><th>電子マネー</th><td>スマホやカードをかざす（Suica・PASMO・WAONなど）</td></tr><tr><th>カード</th><td>クレジットカード・デビットカード</td></tr></table></div><p class="memo"><b>ぜんぶ使う必要はありません。</b>よく行くお店で使えるものを1つ。現金と併用でかまいません。</p></div></section>
-<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">🔄</span><span class="h2-body"><span class="h2-kicker">しくみ</span><span class="h2-title">「チャージ → 払う」</span></span></h2><ol class="steps"><li>先にお金を入れておく（チャージ）。入れた分しか使えないので安心</li><li>レジで「ペイペイで」など、使うものを伝える</li><li><b>見せる</b>（自分のバーコード）か、<b>読む</b>（お店のQR＋金額入力）</li></ol></div></section>
-<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">🛍️</span><span class="h2-body"><span class="h2-kicker">体験</span><span class="h2-title">店頭での払い方</span></span></h2><ol class="steps"><li>アプリを開いて、バーコード画面を出す練習</li><li>お店のQRを読み取って、金額を入力する練習</li><li>払い終わると画面と音で確認できる。履歴にも残る</li></ol></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">🔄</span><span class="h2-body"><span class="h2-kicker">しくみ</span><span class="h2-title">「チャージ → 払う」</span></span></h2><div class="duo"><div class="duo-main"><ol class="steps"><li>先にお金を入れておく（チャージ）。入れた分しか使えないので安心</li><li>レジで「ペイペイで」など、使うものを伝える</li><li><b>見せる</b>（自分のバーコード）か、<b>読む</b>（お店のQR＋金額入力）</li></ol></div><div class="phone-wrap"><div class="phone"><div class="screen"><div class="scr-bar">スマホ決済</div><div class="scr-body"><div class="balance"><span>残高</span><b>1,000円</b></div><p style="text-align:center;font-size:11.5px;color:#6E6A5E;margin-top:12px">この画面をお店の人に見せる</p><span class="here here--rect" style="display:block;margin:0 4px"><span style="display:block"><span class="barcode" style="display:block"></span><p class="barcode-num">1234 5678 9012</p></span></span></div></div></div><p class="phone-cap">「見せる」払い方</p><p class="phone-note">※画面はイメージです</p></div></div></div></section>
+<section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">🛍️</span><span class="h2-body"><span class="h2-kicker">体験</span><span class="h2-title">店頭での払い方</span></span></h2><div class="duo"><div class="duo-main"><ol class="steps"><li>アプリを開いて、バーコード画面を出す練習</li><li>お店のQRを読み取って、金額を入力する練習</li><li>払い終わると画面と音で確認できる。履歴にも残る</li></ol></div><div class="phone-wrap"><div class="phone"><div class="screen"><div class="scr-bar">読み取り</div><div class="scr-body scr-body--dark"><div class="qr-frame"><svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" fill="#222"><rect x="0.0" y="0.0" width="5.3" height="5.3"/><rect x="5.3" y="0.0" width="5.3" height="5.3"/><rect x="10.7" y="0.0" width="5.3" height="5.3"/><rect x="16.0" y="0.0" width="5.3" height="5.3"/><rect x="21.3" y="0.0" width="5.3" height="5.3"/><rect x="26.7" y="0.0" width="5.3" height="5.3"/><rect x="32.0" y="0.0" width="5.3" height="5.3"/><rect x="42.7" y="0.0" width="5.3" height="5.3"/><rect x="53.3" y="0.0" width="5.3" height="5.3"/><rect x="58.7" y="0.0" width="5.3" height="5.3"/><rect x="64.0" y="0.0" width="5.3" height="5.3"/><rect x="69.3" y="0.0" width="5.3" height="5.3"/><rect x="74.7" y="0.0" width="5.3" height="5.3"/><rect x="80.0" y="0.0" width="5.3" height="5.3"/><rect x="85.3" y="0.0" width="5.3" height="5.3"/><rect x="0.0" y="5.3" width="5.3" height="5.3"/><rect x="32.0" y="5.3" width="5.3" height="5.3"/><rect x="42.7" y="5.3" width="5.3" height="5.3"/><rect x="48.0" y="5.3" width="5.3" height="5.3"/><rect x="53.3" y="5.3" width="5.3" height="5.3"/><rect x="64.0" y="5.3" width="5.3" height="5.3"/><rect x="0.0" y="10.7" width="5.3" height="5.3"/><rect x="10.7" y="10.7" width="5.3" height="5.3"/><rect x="16.0" y="10.7" width="5.3" height="5.3"/><rect x="21.3" y="10.7" width="5.3" height="5.3"/><rect x="32.0" y="10.7" width="5.3" height="5.3"/><rect x="42.7" y="10.7" width="5.3" height="5.3"/><rect x="53.3" y="10.7" width="5.3" height="5.3"/><rect x="58.7" y="10.7" width="5.3" height="5.3"/><rect x="64.0" y="10.7" width="5.3" height="5.3"/><rect x="74.7" y="10.7" width="5.3" height="5.3"/><rect x="80.0" y="10.7" width="5.3" height="5.3"/><rect x="85.3" y="10.7" width="5.3" height="5.3"/><rect x="0.0" y="16.0" width="5.3" height="5.3"/><rect x="10.7" y="16.0" width="5.3" height="5.3"/><rect x="16.0" y="16.0" width="5.3" height="5.3"/><rect x="21.3" y="16.0" width="5.3" height="5.3"/><rect x="32.0" y="16.0" width="5.3" height="5.3"/><rect x="48.0" y="16.0" width="5.3" height="5.3"/><rect x="58.7" y="16.0" width="5.3" height="5.3"/><rect x="64.0" y="16.0" width="5.3" height="5.3"/><rect x="74.7" y="16.0" width="5.3" height="5.3"/><rect x="80.0" y="16.0" width="5.3" height="5.3"/><rect x="85.3" y="16.0" width="5.3" height="5.3"/><rect x="0.0" y="21.3" width="5.3" height="5.3"/><rect x="10.7" y="21.3" width="5.3" height="5.3"/><rect x="16.0" y="21.3" width="5.3" height="5.3"/><rect x="21.3" y="21.3" width="5.3" height="5.3"/><rect x="32.0" y="21.3" width="5.3" height="5.3"/><rect x="42.7" y="21.3" width="5.3" height="5.3"/><rect x="48.0" y="21.3" width="5.3" height="5.3"/><rect x="58.7" y="21.3" width="5.3" height="5.3"/><rect x="64.0" y="21.3" width="5.3" height="5.3"/><rect x="74.7" y="21.3" width="5.3" height="5.3"/><rect x="80.0" y="21.3" width="5.3" height="5.3"/><rect x="85.3" y="21.3" width="5.3" height="5.3"/><rect x="0.0" y="26.7" width="5.3" height="5.3"/><rect x="32.0" y="26.7" width="5.3" height="5.3"/><rect x="48.0" y="26.7" width="5.3" height="5.3"/><rect x="53.3" y="26.7" width="5.3" height="5.3"/><rect x="64.0" y="26.7" width="5.3" height="5.3"/><rect x="0.0" y="32.0" width="5.3" height="5.3"/><rect x="5.3" y="32.0" width="5.3" height="5.3"/><rect x="10.7" y="32.0" width="5.3" height="5.3"/><rect x="16.0" y="32.0" width="5.3" height="5.3"/><rect x="21.3" y="32.0" width="5.3" height="5.3"/><rect x="26.7" y="32.0" width="5.3" height="5.3"/><rect x="32.0" y="32.0" width="5.3" height="5.3"/><rect x="42.7" y="32.0" width="5.3" height="5.3"/><rect x="53.3" y="32.0" width="5.3" height="5.3"/><rect x="64.0" y="32.0" width="5.3" height="5.3"/><rect x="69.3" y="32.0" width="5.3" height="5.3"/><rect x="74.7" y="32.0" width="5.3" height="5.3"/><rect x="80.0" y="32.0" width="5.3" height="5.3"/><rect x="85.3" y="32.0" width="5.3" height="5.3"/><rect x="90.7" y="32.0" width="5.3" height="5.3"/><rect x="42.7" y="37.3" width="5.3" height="5.3"/><rect x="48.0" y="37.3" width="5.3" height="5.3"/><rect x="0.0" y="42.7" width="5.3" height="5.3"/><rect x="5.3" y="42.7" width="5.3" height="5.3"/><rect x="16.0" y="42.7" width="5.3" height="5.3"/><rect x="26.7" y="42.7" width="5.3" height="5.3"/><rect x="32.0" y="42.7" width="5.3" height="5.3"/><rect x="37.3" y="42.7" width="5.3" height="5.3"/><rect x="42.7" y="42.7" width="5.3" height="5.3"/><rect x="53.3" y="42.7" width="5.3" height="5.3"/><rect x="58.7" y="42.7" width="5.3" height="5.3"/><rect x="69.3" y="42.7" width="5.3" height="5.3"/><rect x="80.0" y="42.7" width="5.3" height="5.3"/><rect x="85.3" y="42.7" width="5.3" height="5.3"/><rect x="5.3" y="48.0" width="5.3" height="5.3"/><rect x="10.7" y="48.0" width="5.3" height="5.3"/><rect x="21.3" y="48.0" width="5.3" height="5.3"/><rect x="42.7" y="48.0" width="5.3" height="5.3"/><rect x="48.0" y="48.0" width="5.3" height="5.3"/><rect x="58.7" y="48.0" width="5.3" height="5.3"/><rect x="64.0" y="48.0" width="5.3" height="5.3"/><rect x="80.0" y="48.0" width="5.3" height="5.3"/><rect x="90.7" y="48.0" width="5.3" height="5.3"/><rect x="0.0" y="53.3" width="5.3" height="5.3"/><rect x="10.7" y="53.3" width="5.3" height="5.3"/><rect x="16.0" y="53.3" width="5.3" height="5.3"/><rect x="26.7" y="53.3" width="5.3" height="5.3"/><rect x="32.0" y="53.3" width="5.3" height="5.3"/><rect x="37.3" y="53.3" width="5.3" height="5.3"/><rect x="48.0" y="53.3" width="5.3" height="5.3"/><rect x="53.3" y="53.3" width="5.3" height="5.3"/><rect x="64.0" y="53.3" width="5.3" height="5.3"/><rect x="69.3" y="53.3" width="5.3" height="5.3"/><rect x="74.7" y="53.3" width="5.3" height="5.3"/><rect x="85.3" y="53.3" width="5.3" height="5.3"/><rect x="90.7" y="53.3" width="5.3" height="5.3"/><rect x="42.7" y="58.7" width="5.3" height="5.3"/><rect x="53.3" y="58.7" width="5.3" height="5.3"/><rect x="58.7" y="58.7" width="5.3" height="5.3"/><rect x="69.3" y="58.7" width="5.3" height="5.3"/><rect x="85.3" y="58.7" width="5.3" height="5.3"/><rect x="0.0" y="64.0" width="5.3" height="5.3"/><rect x="5.3" y="64.0" width="5.3" height="5.3"/><rect x="10.7" y="64.0" width="5.3" height="5.3"/><rect x="16.0" y="64.0" width="5.3" height="5.3"/><rect x="21.3" y="64.0" width="5.3" height="5.3"/><rect x="26.7" y="64.0" width="5.3" height="5.3"/><rect x="32.0" y="64.0" width="5.3" height="5.3"/><rect x="42.7" y="64.0" width="5.3" height="5.3"/><rect x="48.0" y="64.0" width="5.3" height="5.3"/><rect x="58.7" y="64.0" width="5.3" height="5.3"/><rect x="69.3" y="64.0" width="5.3" height="5.3"/><rect x="74.7" y="64.0" width="5.3" height="5.3"/><rect x="85.3" y="64.0" width="5.3" height="5.3"/><rect x="0.0" y="69.3" width="5.3" height="5.3"/><rect x="32.0" y="69.3" width="5.3" height="5.3"/><rect x="48.0" y="69.3" width="5.3" height="5.3"/><rect x="53.3" y="69.3" width="5.3" height="5.3"/><rect x="64.0" y="69.3" width="5.3" height="5.3"/><rect x="69.3" y="69.3" width="5.3" height="5.3"/><rect x="80.0" y="69.3" width="5.3" height="5.3"/><rect x="0.0" y="74.7" width="5.3" height="5.3"/><rect x="10.7" y="74.7" width="5.3" height="5.3"/><rect x="16.0" y="74.7" width="5.3" height="5.3"/><rect x="21.3" y="74.7" width="5.3" height="5.3"/><rect x="32.0" y="74.7" width="5.3" height="5.3"/><rect x="42.7" y="74.7" width="5.3" height="5.3"/><rect x="53.3" y="74.7" width="5.3" height="5.3"/><rect x="58.7" y="74.7" width="5.3" height="5.3"/><rect x="69.3" y="74.7" width="5.3" height="5.3"/><rect x="74.7" y="74.7" width="5.3" height="5.3"/><rect x="80.0" y="74.7" width="5.3" height="5.3"/><rect x="85.3" y="74.7" width="5.3" height="5.3"/><rect x="0.0" y="80.0" width="5.3" height="5.3"/><rect x="10.7" y="80.0" width="5.3" height="5.3"/><rect x="16.0" y="80.0" width="5.3" height="5.3"/><rect x="21.3" y="80.0" width="5.3" height="5.3"/><rect x="32.0" y="80.0" width="5.3" height="5.3"/><rect x="48.0" y="80.0" width="5.3" height="5.3"/><rect x="53.3" y="80.0" width="5.3" height="5.3"/><rect x="64.0" y="80.0" width="5.3" height="5.3"/><rect x="80.0" y="80.0" width="5.3" height="5.3"/><rect x="90.7" y="80.0" width="5.3" height="5.3"/><rect x="0.0" y="85.3" width="5.3" height="5.3"/><rect x="10.7" y="85.3" width="5.3" height="5.3"/><rect x="16.0" y="85.3" width="5.3" height="5.3"/><rect x="21.3" y="85.3" width="5.3" height="5.3"/><rect x="32.0" y="85.3" width="5.3" height="5.3"/><rect x="42.7" y="85.3" width="5.3" height="5.3"/><rect x="48.0" y="85.3" width="5.3" height="5.3"/><rect x="58.7" y="85.3" width="5.3" height="5.3"/><rect x="64.0" y="85.3" width="5.3" height="5.3"/><rect x="69.3" y="85.3" width="5.3" height="5.3"/><rect x="80.0" y="85.3" width="5.3" height="5.3"/><rect x="85.3" y="85.3" width="5.3" height="5.3"/><rect x="0.0" y="90.7" width="5.3" height="5.3"/><rect x="32.0" y="90.7" width="5.3" height="5.3"/><rect x="42.7" y="90.7" width="5.3" height="5.3"/><rect x="53.3" y="90.7" width="5.3" height="5.3"/><rect x="69.3" y="90.7" width="5.3" height="5.3"/><rect x="74.7" y="90.7" width="5.3" height="5.3"/><rect x="85.3" y="90.7" width="5.3" height="5.3"/></svg></div><p style="position:absolute;left:0;right:0;bottom:64px;text-align:center;color:#fff;font-size:11.5px">わくの中にQRコードを入れる</p><div class="cam-ctl"><span class="shutter"></span></div></div></div></div><p class="phone-cap">「読む」払い方</p><p class="phone-note">※画面はイメージです</p></div></div></div></section>
 <section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">💰</span><span class="h2-body"><span class="h2-kicker">チャージ</span><span class="h2-title">お金の入れ方（種類だけ）</span></span></h2><div class="words-wrap"><table class="words"><tr><th>現金で</th><td>コンビニのATMやレジから。いちばん分かりやすい</td></tr><tr><th>銀行口座から</th><td>アプリと口座をつなぐ。設定はゆっくり個別にやるのが安心</td></tr><tr><th>オートチャージ</th><td>自動で補充。便利だが、まずは手動で慣れてから</td></tr></table></div></div></section>
 <section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">🔒</span><span class="h2-body"><span class="h2-kicker">あんしん</span><span class="h2-title">設定と習慣</span></span></h2><ol class="steps"><li>スマホに画面ロック（パスコード・指紋）をかけておく</li><li>チャージは少額から。上限も設定できる</li><li>ときどき「履歴」を見て確認</li><li>なくしたら、すぐ相談。止める手続きがあります</li></ol></div></section>
 <section class="slide"><div class="slide-inner"><h2><span class="h2-emoji">❓</span><span class="h2-body"><span class="h2-kicker">Q&amp;A</span><span class="h2-title">よくある不安に答えます</span></span></h2><div class="words-wrap"><table class="words"><tr><th>お金が消えない？</th><td>残高は履歴で確認できます。勝手に減ることはありません</td></tr><tr><th>電池が切れたら？</th><td>払えなくなるので、現金も少し持っておくのが現実的</td></tr><tr><th>ポイントって？</th><td>払った額に応じて貯まる、おまけと考えれば十分</td></tr></table></div></div></section>
